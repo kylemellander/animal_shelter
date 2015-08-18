@@ -47,7 +47,7 @@ class Animal
   end
 
   define_singleton_method(:find) do |id|
-    animals = DB.exec("SELECT * FROM animals WHERE id=#{id}")
+    animals = DB.exec("SELECT * FROM animals WHERE id=#{id} ORDER BY name;")
     animals.each() do |animal|
       name = animal.fetch('name')
       gender = animal.fetch('gender')
