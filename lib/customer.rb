@@ -53,4 +53,14 @@ class Customer
     end
     matches
   end
+
+  define_method(:find_partial_match) do
+    partial_matches = []
+    Animal.all().each() do |animal|
+      if animal.breed().downcase() != @breed_pref.downcase() && animal.type().downcase == @animal_pref.downcase()
+        partial_matches.push(animal)
+      end
+    end
+   partial_matches
+ end
 end
