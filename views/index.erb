@@ -1,6 +1,10 @@
 <h1> Hundred Acre Wood Shelter </h1>
 <h2> Look at these sweet faces!</h2>
 
+<% if @success_message != nil %>
+<div class="success"><%= @success_message %></div>
+<% end %>
+
 <h5>Animals who need a home</h5>
 
 <ul>
