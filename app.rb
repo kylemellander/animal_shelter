@@ -11,3 +11,16 @@ get('/') do
   @animals = Animal.all()
   erb(:index)
 end
+
+post('/animal/new') do
+  name = params.fetch('name')
+  gender = params.fetch('gender')
+  type = params.fetch('type')
+  breed = params.fetch('breed')
+  pic = params.fetch('pic')
+  time = Time.new()
+  Animal.new({:name => name, :gender => gender, :type => type, :breed => breed, :pic => pic, :date => time}).save()
+  @success_message = "You have added #{name} the #{breed} #{type}."
+  @animals = Animal.all()
+  erb(:index)
+end
