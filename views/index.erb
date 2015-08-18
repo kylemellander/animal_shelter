@@ -1,0 +1,21 @@
+<h1> Hundred Acre Wood Shelter </h1>
+<h2> Look at these sweet faces!</h2>
+
+<h5>Animals who need a home</h5>
+
+<ul>
+  <% @animals.each() do |animal| %>
+    <li><%= animal.name() %></li>
+    <li><%= animal.gender() %></li>
+    <li><%= animal.type() %></li>
+    <li><%= animal.breed() %></li>
+  <% end %>
+</ul>
+
+<form method='post' action='/animal/new'>
+  <input name="name" type="text" placeholder="Name">
+  <input name="gender" type="text" placeholder="Gender">
+  <input name="type" type="text" placeholder="Type (ex: Kangaroo)">
+  <input name="breed" type="text" placeholder="Breed (ex: Hoppy) ">
+  <button type="submit">Add Animal</button>
+</form>
