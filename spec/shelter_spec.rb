@@ -62,4 +62,18 @@ describe(Customer) do
       expect(Customer.all()).to(eq([test_customer]))
     end
   end
+
+  describe(".delete") do
+    it("deletes single and all customers") do
+      test_customer = Customer.new({:name => 'Christopher Robin', :phone => "444-4444", :animal_pref => "Bear", :breed_pref => "Stuffed"})
+      test_customer.save()
+      Customer.delete()
+      expect(Customer.all()).to(eq([]))
+      test_customer.save()
+      test_customer2 = Customer.new({:name => 'Kanga', :phone => "5", :animal_pref => "Kangaroo", :breed_pref => "Hoppy"})
+      test_customer2.save()
+      Customer.delete(test_customer.id())
+      expect(Customer.all()).to(eq([test_customer2]))
+    end
+  end
 end

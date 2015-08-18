@@ -36,4 +36,11 @@ class Customer
     name() == other.name() && phone() == other.phone() && animal_pref() == other.animal_pref() && breed_pref() == other.breed_pref()
   end
 
+  define_singleton_method(:delete) do |id= nil|
+    if id != nil
+      DB.exec("DELETE FROM customers * WHERE id=#{id};")
+    else
+      DB.exec("DELETE FROM customers *;")
+    end
+  end
 end
