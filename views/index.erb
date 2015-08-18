@@ -10,11 +10,13 @@
 
 <ul>
   <% @animals.each() do |animal| %>
-    <img src="<%= animal.pic() %>" style="width: 300px; height:auto;">
-    <li><%= animal.name() %></li>
-    <li><%= animal.gender() %></li>
-    <li><%= animal.type() %></li>
-    <li><%= animal.breed() %></li>
+    <% if animal.customer_id == 0 %>
+      <img src="<%= animal.pic() %>" style="width: 300px; height:auto;">
+      <li><%= animal.name() %></li>
+      <li><%= animal.gender() %></li>
+      <li><%= animal.type() %></li>
+      <li><%= animal.breed() %></li>
+    <% end %>
   <% end %>
 </ul>
 

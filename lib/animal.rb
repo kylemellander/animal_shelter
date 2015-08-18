@@ -55,4 +55,7 @@ class Animal
     end
   end
 
+  define_method(:update_customer_id) do |customer_id|
+    DB.exec("UPDATE animals SET customer_id=#{customer_id} WHERE id=#{self.id};")
+  end
 end

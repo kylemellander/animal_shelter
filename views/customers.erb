@@ -1,11 +1,16 @@
 <h1> Willing Adopters </h1>
-
+<% if @success_message !=nil %>
+  <%= @success_message %>
+<% end %>
 <ul>
   <% @customers.each do |customer| %>
     <li><%= customer.name() %></li>
-    <li><%= customer.phone() %></li>
-    <li><%= customer.animal_pref() %></li>
-    <li><%= customer.breed_pref() %></li>
+    <ul>
+      <li><%= customer.phone() %></li>
+      <li><%= customer.animal_pref() %></li>
+      <li><%= customer.breed_pref() %></li>
+      <li><a href="/matches/<%= customer.id() %>">matches</a></li>
+    </ul>
   <% end %>
 </ul>
 

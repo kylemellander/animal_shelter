@@ -63,4 +63,13 @@ class Customer
     end
    partial_matches
  end
+
+  define_singleton_method(:find) do |id|
+    Customer.all().each do |customer|
+      if customer.id() == id
+        return customer
+      end
+    end
+  end
+
 end
