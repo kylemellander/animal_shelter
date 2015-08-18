@@ -24,3 +24,8 @@ post('/animal/new') do
   @animals = Animal.all()
   erb(:index)
 end
+
+get('/customers') do
+  @customers = Customer.all()
+  erb(:customers)
+end

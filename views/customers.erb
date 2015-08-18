@@ -1,0 +1,18 @@
+<h1> Willing Adopters </h1>
+
+<ul>
+  <% @customers.each do |customer| %>
+    <li><%= customer.name() %></li>
+    <li><%= customer.phone() %></li>
+    <li><%= customer.animal_pref() %></li>
+    <li><%= customer.breed_pref() %></li>
+  <% end %>
+</ul>
+
+<form method="post" action="/customer/new">
+  <input name="name" type="text" placeholder="Name">
+  <input name="phone" type="text" placeholder="Digits">
+  <input name="animal_pref" type="text" placeholder="Animal Preference (ex: Pig)">
+  <input name="breed_pref" type="text" placeholder="Breed Preference (ex: Let)">
+  <button type="submit">Add Customer</button>
+</form>
