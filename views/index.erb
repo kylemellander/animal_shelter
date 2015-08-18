@@ -5,6 +5,7 @@
 
 <ul>
   <% @animals.each() do |animal| %>
+    <img src="<%= animal.pic() %>" style="width: 300px; height:auto;">
     <li><%= animal.name() %></li>
     <li><%= animal.gender() %></li>
     <li><%= animal.type() %></li>
@@ -17,5 +18,6 @@
   <input name="gender" type="text" placeholder="Gender">
   <input name="type" type="text" placeholder="Type (ex: Kangaroo)">
   <input name="breed" type="text" placeholder="Breed (ex: Hoppy) ">
+  <input name="pic" type="text" placeholder="Link to Picture (http://www.google.com/jpg.jpg)" size="60">
   <button type="submit">Add Animal</button>
 </form>
