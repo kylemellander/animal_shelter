@@ -37,4 +37,12 @@ class Animal
     result = DB.exec("INSERT INTO animals (name, gender, type, date, customer_id, pic, breed) VALUES ('#{@name}','#{@gender}','#{@type}','#{@date}','#{@customer_id}','#{@pic}','#{@breed}') RETURNING id;")
     @id = result.first().fetch('id').to_i()
   end
+
+  define_singleton_method(:delete) do |id = nil|
+    if id == nil
+      DB.exec("DELETE FROM animals *;")
+    else
+      DB.exec("DELETE FROM animals * WHERE id=#{id}")
+    end
+  end
 end
