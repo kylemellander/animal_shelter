@@ -76,4 +76,14 @@ describe(Customer) do
       expect(Customer.all()).to(eq([test_customer2]))
     end
   end
+  
+  describe("#find_match") do
+    it("finds an animal with the matching customer_id") do
+      test_customer = Customer.new({:name => 'Christopher Robin', :phone => "444-4444", :animal_pref => "Bear", :breed_pref => "Stuffed"})
+      test_customer.save()
+      test_animal = Animal.new({:name => "Winnie the Pooh", :type => "Bear", :breed => "Stuffed", :gender => "M", :date => "2015-08-17 00:00:00", :pic => "http://www.cartoonpics.net/data/media/33/gallery_poster_winnie_pooh.jpg"})
+      test_animal.save()
+      expect(test_customer.find_match()).to(eq([test_animal]))
+    end
+  end
 end

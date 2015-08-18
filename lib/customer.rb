@@ -36,11 +36,21 @@ class Customer
     name() == other.name() && phone() == other.phone() && animal_pref() == other.animal_pref() && breed_pref() == other.breed_pref()
   end
 
-  define_singleton_method(:delete) do |id= nil|
+  define_singleton_method(:delete) do |id = nil|
     if id != nil
       DB.exec("DELETE FROM customers * WHERE id=#{id};")
     else
       DB.exec("DELETE FROM customers *;")
     end
+  end
+
+  define_method(:find_match) do
+    matches = []
+    Animal.all().each() do |animal|
+      if animal.breed().downcase() == @breed_pref.downcase() && animal.type().downcase() == @animal_pref.downcase()
+        matches.push(animal)
+      end
+    end
+    matches
   end
 end
