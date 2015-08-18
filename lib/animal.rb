@@ -1,5 +1,6 @@
 class Animal
-  attr_reader(:id, :name, :gender, :type, :date, :breed, :customer_id, :pic)
+  attr_reader(:id, :name, :gender, :type, :date, :breed, :pic)
+  attr_accessor(:customer_id)
 
   define_method(:initialize) do |attributes|
     @id = attributes.fetch(:id, nil).to_i()
@@ -47,17 +48,10 @@ class Animal
   end
 
   define_singleton_method(:find) do |id|
-    animals = DB.exec("SELECT * FROM animals WHERE id=#{id} ORDER BY name;")
-    animals.each() do |animal|
-      name = animal.fetch('name')
-      gender = animal.fetch('gender')
-      type = animal.fetch('type')
-      date = animal.fetch('date')
-      breed = animal.fetch('breed')
-      customer_id = animal.fetch('customer_id').to_i()
-      id = animal.fetch('id').to_i()
-      pic = animal.fetch('pic')
-      return Animal.new({:name => name, :gender => gender, :type => type, :date => date, :customer_id => customer_id, :pic => pic, :id => id, :breed => breed})
+    Animal.all().each do |animal|
+      if animal.id() == id
+        return animal
+      end
     end
   end
 
